@@ -1,6 +1,5 @@
 import datetime
 from typing import TextIO
-import os
 
 
 def write_begin_to_file(fp):
