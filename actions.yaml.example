@@ -1,0 +1,29 @@
+name: Alif Core 2 Backend Autodeploy
+
+# All config keys are mandatory
+# Config keys can be reused down in jobs via ${key_name}
+# do not forget to update `github_url`
+
+configs:
+  - key: working_branch
+    value: master
+  - key: path_to_ssh_key
+    value: /var/github-deployment-keys/id_rsa
+  - key: repository_path
+    value: /var/www/my-awesome-project
+  - key: github_url
+    value: https://api.github.com/repos/%your_username/%my-awesome-project/commits/${working_branch}
+  - key: std_out
+    value: ${repository_path}/deployment-logs/out.log
+  - key: std_err
+    value:  ${repository_path}/deployment-logs/err.log
+
+jobs:
+  - name: Add ssh key
+    run: ssh-add ${path_to_ssh_key}
+  - name: Run checkout all
+    run: git checkout .
+  - name: Clean untracked files
+    run: git clean -fd
+  - name: Pulling from working branch
+    run: git pull origin ${working_branch}
