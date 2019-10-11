@@ -1,4 +1,4 @@
-name: Alif Core 2 Backend Autodeploy
+name: My awesome project deployment
 
 # All config keys are mandatory
 # Config keys can be reused down in jobs via ${key_name}
@@ -12,7 +12,7 @@ configs:
   - key: repository_path
     value: /var/www/my-awesome-project
   - key: github_url
-    value: https://api.github.com/repos/%your_username/%my-awesome-project/commits/${working_branch}
+    value: https://api.github.com/repos/%username/%my-awesome-project/commits/${working_branch}
   - key: std_out
     value: ${repository_path}/deployment-logs/out.log
   - key: std_err
