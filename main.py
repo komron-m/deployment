@@ -17,6 +17,7 @@ repo = Repo.init(os.path.join(configQuerier.getRepositoryPath()))
 
 # fetch last head `hash`
 last_head = repo.head.commit
+last_head = str(last_head)
 
 # fetch from github
 remote_last_head = github_fetcher.fetch_last_head_from_github(
