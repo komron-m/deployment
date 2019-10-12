@@ -1,16 +1,15 @@
 import requests
-import re
 
 
-def fetch_last_head_from_github(github_url):
+def fetch_last_head_from_github(github_url, token):
     """fetches last head hash from github
-    maybe there is a better ways to check whether a branch head was updated ??
-    TODO: find best approach
+    maybe there is a better ways to check whether a branch head was updated
     """
-    resp = requests.get(github_url)
-    resp_data = resp.json()
-    resp_url = resp_data["url"]
 
-    remote_last_head = re.findall('(?:commits.)(\w{40})$', resp_url)
+    headers = {
+        "Accept": "application/vnd.github.VERSION.sha",
+        "Authorization": "token %s" % token
+    }
+    resp = requests.get(github_url, headers=headers)
 
-    return remote_last_head[0]
+    return resp.content.decode("utf-8")

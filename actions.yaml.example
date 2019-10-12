@@ -7,6 +7,8 @@ name: My awesome project deployment
 configs:
   - key: working_branch
     value: master
+  - key: access_token
+    value: 1396c19f113b99b321182392a5cccc145ee902ba
   - key: path_to_ssh_key
     value: /var/github-deployment-keys/id_rsa
   - key: repository_path

@@ -22,3 +22,6 @@ class ConfigQuerier:
 
     def getStdErrFilePath(self) -> str:
         return self.parsed_actions["configs"]["std_err"]
+
+    def getAccessToken(self) -> str:
+        return self.parsed_actions["configs"]["access_token"]

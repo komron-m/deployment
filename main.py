@@ -19,7 +19,10 @@ repo = Repo.init(os.path.join(configQuerier.getRepositoryPath()))
 last_head = repo.head.commit
 
 # fetch from github
-remote_last_head = github_fetcher.fetch_last_head_from_github(configQuerier.getGitHubUrl())
+remote_last_head = github_fetcher.fetch_last_head_from_github(
+    configQuerier.getGitHubUrl(),
+    configQuerier.getAccessToken()
+)
 
 # init simple file logger instance
 log = logger.Logger(
@@ -34,6 +37,7 @@ if remote_last_head != last_head:
     # iterating over key (job_desc) and value (job_command)
     # redirecting stdout and stderr to files
     for job_desc, job_command in configQuerier.getJobs().items():
+        print("job: `%s`" % job_desc)
         subprocess.run(
             args=job_command,
             stdout=log.getStdOutFile(),

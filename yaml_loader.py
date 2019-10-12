@@ -5,6 +5,9 @@ import re
 def replace_placeholders(some_string, dictionary):
     """if string has some placeholder then it's gonna be replaced with """
 
+    if some_string is None:
+        return ""
+
     # regex that detects a place-holder in some string
     regex_template = '(?:\${)(\w+)(?:})'
 
