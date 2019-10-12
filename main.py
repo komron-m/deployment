@@ -41,7 +41,8 @@ if remote_last_head != last_head:
         subprocess.run(
             args=job_command,
             stdout=log.getStdOutFile(),
-            stderr=log.getStdErrFile()
+            stderr=log.getStdErrFile(),
+            shell=True
         )
 
 log.closeFiles()
