@@ -40,13 +40,15 @@ def main():
 
         # iterating over key (job_desc) and value (job_command)
         # redirecting stdout and stderr to files
+        single_command = ""
         for job_desc, job_command in config_query.getJobs().items():
-            print("job: `%s`" % job_desc)
-            subprocess.run(
-                args=job_command,
-                stdout=log.getStdOutFile(),
-                stderr=log.getStdErrFile(),
-                shell=True
-            )
+            single_command += job_command + " && "
+        single_command = "echo 'Success\n'"
 
+        subprocess.run(
+            args=single_command,
+            stdout=log.getStdOutFile(),
+            stderr=log.getStdErrFile(),
+            shell=True
+        )
     log.closeFiles()
