@@ -43,7 +43,7 @@ def main():
         single_command = ""
         for job_desc, job_command in config_query.getJobs().items():
             single_command += job_command + " && "
-        single_command = "echo 'Success\n'"
+        single_command += "echo 'Success\n'"
 
         subprocess.run(
             args=single_command,
