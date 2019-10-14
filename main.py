@@ -6,44 +6,46 @@ import yaml_loader
 import config_querier
 import logger
 
-# load and pars yaml configurations
-actions = yaml_loader.load_yaml()
 
-# queries config file
-configQuerier = config_querier.ConfigQuerier(actions)
+def main():
+    # load and pars yaml configurations
+    actions = yaml_loader.load_yaml()
 
-# init git repository
-repo = Repo.init(os.path.join(configQuerier.getRepositoryPath()))
+    # queries config file
+    config_query = config_querier.ConfigQuerier(actions)
 
-# fetch last head `hash`
-last_head = repo.head.commit
-last_head = str(last_head)
+    # init git repository
+    repo = Repo.init(os.path.join(config_query.getRepositoryPath()))
 
-# fetch from github
-remote_last_head = github_fetcher.fetch_last_head_from_github(
-    configQuerier.getGitHubUrl(),
-    configQuerier.getAccessToken()
-)
+    # fetch last head `hash`
+    last_head = repo.head.commit
+    last_head = str(last_head)
 
-# init simple file logger instance
-log = logger.Logger(
-    os.path.join(configQuerier.getStdOutFilePath()),
-    os.path.join(configQuerier.getStdErrFilePath())
-)
+    # fetch from github
+    remote_last_head = github_fetcher.fetch_last_head_from_github(
+        config_query.getGitHubUrl(),
+        config_query.getAccessToken()
+    )
 
-if remote_last_head != last_head:
-    # change to repository directory to execute commands
-    os.chdir(configQuerier.getRepositoryPath())
+    # init simple file logger instance
+    log = logger.Logger(
+        os.path.join(config_query.getStdOutFilePath()),
+        os.path.join(config_query.getStdErrFilePath())
+    )
 
-    # iterating over key (job_desc) and value (job_command)
-    # redirecting stdout and stderr to files
-    for job_desc, job_command in configQuerier.getJobs().items():
-        print("job: `%s`" % job_desc)
-        subprocess.run(
-            args=job_command,
-            stdout=log.getStdOutFile(),
-            stderr=log.getStdErrFile(),
-            shell=True
-        )
+    if remote_last_head != last_head:
+        # change to repository directory to execute commands
+        os.chdir(config_query.getRepositoryPath())
 
-log.closeFiles()
+        # iterating over key (job_desc) and value (job_command)
+        # redirecting stdout and stderr to files
+        for job_desc, job_command in config_query.getJobs().items():
+            print("job: `%s`" % job_desc)
+            subprocess.run(
+                args=job_command,
+                stdout=log.getStdOutFile(),
+                stderr=log.getStdErrFile(),
+                shell=True
+            )
+
+    log.closeFiles()
