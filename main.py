@@ -1,15 +1,16 @@
 import os
 import subprocess
 from git import Repo
-import github_fetcher
-import yaml_loader
-import config_querier
-import logger
+from github import github_fetcher
+from yaml_parser import yaml_loader
+from helpers import config_querier
+from logger import logger
 
 
 def main():
     # load and pars yaml configurations
-    actions = yaml_loader.load_yaml()
+    action_yaml_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "actions.yaml")
+    actions = yaml_loader.load_yaml(action_yaml_path)
 
     # queries config file
     config_query = config_querier.ConfigQuerier(actions)
@@ -49,6 +50,3 @@ def main():
             )
 
     log.closeFiles()
-
-
-main()

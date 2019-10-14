@@ -1,4 +1,3 @@
-import os
 import yaml
 import re
 
@@ -67,12 +66,11 @@ def yaml_jobs_parser(yaml_file):
     yaml_file["jobs"] = new_block
 
 
-def load_yaml(yaml_file_name="actions.yaml"):
+def load_yaml(yaml_file_name):
     """Opens a yaml file and parses it, resolving placeholders bottom down order and return a dictionary"""
 
     # open actions stream (file)
-    file_path = os.path.join(os.path.dirname(__file__), yaml_file_name)
-    actions_yaml = open(file_path, "r")
+    actions_yaml = open(yaml_file_name, "r")
 
     # load (parse) stream
     loaded_yaml_file = yaml.safe_load(actions_yaml)
