@@ -49,3 +49,6 @@ def main():
             )
 
     log.closeFiles()
+
+
+main()
