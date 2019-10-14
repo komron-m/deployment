@@ -1,10 +1,10 @@
 import os
 import subprocess
 from git import Repo
-from github import github_fetcher
-from yaml_parser import yaml_loader
-from helpers import config_querier
-from logger import logger
+import github_fetcher
+import yaml_loader
+import config_querier
+import logger
 
 
 def main():
