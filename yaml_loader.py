@@ -1,3 +1,4 @@
+import os
 import yaml
 import re
 
@@ -70,7 +71,8 @@ def load_yaml(yaml_file_name="actions.yaml"):
     """Opens a yaml file and parses it, resolving placeholders bottom down order and return a dictionary"""
 
     # open actions stream (file)
-    actions_yaml = open(yaml_file_name, "r")
+    file_path = os.path.join(os.path.dirname(__file__), yaml_file_name)
+    actions_yaml = open(file_path, "r")
 
     # load (parse) stream
     loaded_yaml_file = yaml.safe_load(actions_yaml)
