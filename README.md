@@ -13,7 +13,7 @@ First install dependencies:
 Then create your own `actions.yaml` based on provided `actions.yaml.example` and run:
 
 ```python
-# python main.py /var/some_folder/awesome_project_deployment.yaml
+# python deployment /var/some_folder/awesome_project_deployment.yaml
 ```
 
 ### actions.yaml `config` block explained
