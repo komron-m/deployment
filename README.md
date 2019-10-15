@@ -13,7 +13,7 @@ First install dependencies:
 Then create your own `actions.yaml` based on provided `actions.yaml.example` and run:
 
 ```python
-# python main.py
+# python main.py /var/some_folder/awesome_project_deployment.yaml
 ```
 
 ### actions.yaml `config` block explained
@@ -26,3 +26,5 @@ Then create your own `actions.yaml` based on provided `actions.yaml.example` and
   - `std_err` - *Where jobs errors will be stored*
 
 All config keys are mandatory, make sure all permissions are set for files and directories.
+
+`version: 0.0.2`
