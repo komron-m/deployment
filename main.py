@@ -5,11 +5,14 @@ import github_fetcher
 import yaml_loader
 import config_querier
 import logger
+import cli_argument_parser
 
 
 def main():
+    cli_args = cli_argument_parser.get_cli_args()
+
     # load and pars yaml configurations
-    action_yaml_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "actions.yaml")
+    action_yaml_path = os.path.join(cli_args.getAbsFilePath())
     actions = yaml_loader.load_yaml(action_yaml_path)
 
     # queries config file
