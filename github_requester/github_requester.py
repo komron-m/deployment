@@ -1,7 +1,7 @@
 import requests
 
 
-def fetch_last_head_from_github(github_url, token):
+def fetch_last_head_from_github(github_url, token) -> str:
     """fetches last head hash from github
     maybe there is a better ways to check whether a branch head was updated
     """

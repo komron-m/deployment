@@ -48,7 +48,7 @@ def json_actions_parser(json_data):
     dictionary = json_data["configs"]
 
     # iterate over actions_parser
-    for action_name, action in json_data["actions_parser"].items():
+    for action_name, action in json_data["actions"].items():
 
         # parse any placeholder found in `command` variable
         for desc, command in action.items():

@@ -4,7 +4,7 @@ import argparse
 def parse_cli_args():
     """simply parses cli arguments"""
     parser = argparse.ArgumentParser()
-    parser.add_argument("abs_file_path", type=str, help='Absolute path to `actions.yaml` config file like actions.yaml')
+    parser.add_argument("abs_file_path", type=str, help='Absolute path to `actions.json`')
 
     return vars(parser.parse_args())
 
