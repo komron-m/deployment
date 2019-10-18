@@ -42,8 +42,6 @@ def yaml_config_parser(yaml_file):
         new_block[some_name] = replace_placeholders(value_to_be_parsed, new_block)
 
     yaml_file["configs"] = new_block
-
-
 # end of def
 
 

@@ -2,3 +2,4 @@
 __pycache__
 actions.yaml
 *.yaml
+actions.json
