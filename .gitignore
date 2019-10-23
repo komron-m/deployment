@@ -1,3 +1,7 @@
 .idea
 __pycache__
 actions.json
+build/
+dist/
+simple_auto_deployment.egg-info
+deployment.egg-info/

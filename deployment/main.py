@@ -15,14 +15,24 @@ def concat_actions_to_single(actions_group) -> str:
     return merged_command
 
 
-def main():
+def get_file_path_from_cli():
     """simply parses cli argument to get `abs_file_path` which is an absolute path to configs.json"""
     parser = argparse.ArgumentParser()
     parser.add_argument("file_path", type=str, help='Absolute path to `deployment-config.json`')
+
     # parse args and make a dict
     cli_arguments = vars(parser.parse_args())
-    deployment_config_path = os.path.join(cli_arguments["file_path"])
+    return cli_arguments["file_path"]
 
+
+def deploy(deployment_config_file=None):
+    # option to call the deploy function without path
+    # in case it is called directly from cli
+
+    if deployment_config_file is None:
+        deployment_config_file = get_file_path_from_cli()
+
+    deployment_config_path = os.path.join(deployment_config_file)
     # display information about provided config-file.json
     print("Loading deployment configurations from %s...\n" % deployment_config_path)
 

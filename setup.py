@@ -4,9 +4,9 @@ with open("README.md", "r") as fh:
     long_description = fh.read()
 
 setuptools.setup(
-    name="simple-auto-deployment",
+    name="deployment",
     version="1.0.0",
-    author="Komron M.",
+    author="Komron Miralizoda",
     author_email="miralizoda.komron@gmail.com",
     description="Simple tool for autodeploying github projects",
     long_description=long_description,
