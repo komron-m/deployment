@@ -56,7 +56,7 @@ def deploy(deployment_config_file=None):
     remote_last_head = fetch_last_head_from_github(github_url, github_access_token)
 
     if remote_last_head != last_head:
-        print("There were update in repository, running actions...\n")
+        print("There were update in repository, running actions...\n", flush=True)
 
         # change to repository directory to execute commands
         os.chdir(repository_path)
@@ -64,7 +64,7 @@ def deploy(deployment_config_file=None):
         all_actions = parsed_actions["actions"]
 
         for action_group_name, actions_group in all_actions.items():
-            print("Action group `%s` in process" % action_group_name)
+            print("Action group `%s` in process" % action_group_name, flush=True)
 
             all_actions = concat_actions_to_single(actions_group)
 
