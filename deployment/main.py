@@ -1,3 +1,4 @@
+import datetime
 import os
 import subprocess
 import argparse
@@ -25,10 +26,19 @@ def get_file_path_from_cli():
     return cli_arguments["file_path"]
 
 
+def print_starting_lines():
+    line = "".ljust(60, "-")
+    date_time_info = datetime.datetime.now().strftime("%Y-%m-%d, %H:%M:%S").ljust(40, "-").rjust(60, "-")
+    print(line)
+    print(date_time_info)
+    print(line + "\n")
+
+
 def deploy(deployment_config_file=None):
+    print_starting_lines()
+
     # option to call the deploy function without path
     # in case it is called directly from cli
-
     if deployment_config_file is None:
         deployment_config_file = get_file_path_from_cli()
 
