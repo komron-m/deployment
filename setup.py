@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="githubdeployment",
-    version="1.0.0",
+    version="1.0.1",
     author="Komron Miralizoda",
     author_email="miralizoda.komron@gmail.com",
     description="Simple tool for autodeploying github projects",
