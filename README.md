@@ -6,7 +6,7 @@ Requires python >= 3.6
 # pip install github_deployment
 ```
 
-#### Then create your own `deployment.json` based on provided `deployment.example.json` and run:
+#### Then create your own `deployment.json` based on provided `deployment.example.json`.
 ```python
 # create deployment.py and following lines
 from deployment.main import deploy
@@ -15,7 +15,7 @@ deploy('/path/to/deployment.json')
 
 #### Run
 ```shell script
-# python3 deployment.py
+# python deployment.py
 ```
 
 ### deployment.json `config` block explained
