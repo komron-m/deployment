@@ -70,5 +70,4 @@ def deploy(deployment_config_file=None):
 
             subprocess.run(args=all_actions, shell=True)
     else:
-        print("Remote last head {%s} is equal to local, nothing to do.")
-
+        print("Remote last head {%s} is equal to local, nothing to do." % remote_last_head)
