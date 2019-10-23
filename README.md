@@ -3,7 +3,7 @@ Requires python >= 3.6
 
 ### Getting started
 ```shell script
-# pip install github_deployment
+# pip install githubdeployment
 ```
 
 #### Then create your own `deployment.json` based on provided `deployment.example.json`.
