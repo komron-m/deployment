@@ -4,7 +4,7 @@ with open("README.md", "r") as fh:
     long_description = fh.read()
 
 setuptools.setup(
-    name="github_deployment",
+    name="githubdeployment",
     version="1.0.0",
     author="Komron Miralizoda",
     author_email="miralizoda.komron@gmail.com",

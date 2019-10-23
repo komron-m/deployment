@@ -3,5 +3,5 @@ __pycache__
 actions.json
 build/
 dist/
-simple_auto_deployment.egg-info
-deployment.egg-info/
+*.egg-info
+*.egg-info/
