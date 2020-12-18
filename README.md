@@ -26,8 +26,7 @@ python src/main.py /path/to/project_conf.json
     {
       "description": "Install new dependencies",
       "exe": "composer install --ignore-platform-reqs --no-interaction"
-    },
-    ...
+    }
   ]
 }
 ```
