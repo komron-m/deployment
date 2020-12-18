@@ -1,5 +1,5 @@
-Automate addiding `manualy ssh-key, cleaning directory from untracked files, pulling from remote` etc... After pulling
-easily configure `post steps`. This can be piped into your CI pipeline. Tested on python 3.x
+Automate adding `manually ssh-key, cleaning directory from untracked files, pulling from remote` etc... After pulling
+easily configure `post steps`. This can be piped into your CI/CD pipeline. Tested on python 3.x
 
 ### Getting started
 
@@ -26,7 +26,7 @@ python src/main.py /path/to/project_conf.json
     {
       "description": "Install new dependencies",
       "exe": "composer install --ignore-platform-reqs --no-interaction"
-    }
+    },
     ...
   ]
 }
