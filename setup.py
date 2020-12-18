@@ -4,19 +4,16 @@ with open("README.md", "r") as fh:
     long_description = fh.read()
 
 setuptools.setup(
-    name="githubdeployment",
+    name="deployment",
     version="1.0.4",
     author="Komron Miralizoda",
     author_email="miralizoda.komron@gmail.com",
-    description="Simple tool for autodeploying github projects",
+    description="Simple tool for auto-deployment",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/komron-m/github-deployment",
+    url="https://github.com/komron-m/deployment",
     packages=setuptools.find_packages(),
-    install_requires=[
-            'gitpython==3.0.3',
-            'requests==2.22.0',
-    ],
+    install_requires=[],
     classifiers=[
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: MIT License",

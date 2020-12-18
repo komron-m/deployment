@@ -1,28 +1,37 @@
-## Simple auto-deployment tool based on GitHub API
-Requires python >= 3.6
+Automate addiding `manualy ssh-key, cleaning directory from untracked files, pulling from remote` etc... After pulling
+easily configure `post steps`. This can be piped into your CI pipeline. Tested on python 3.x
 
 ### Getting started
-```shell script
-# pip install githubdeployment
+
+```bash
+# simply clone repo and cd into cloned repo
+git clone git@github.com:komron-m/deployment.git && cd deployment
+# after cloning copy test_config.json and set all actions and `keys`
+cp tests/test_config.json /path/to/project_conf.json
+# run script with one argument
+python src/main.py /path/to/project_conf.json
 ```
 
-#### Then create your own `deployment.json` based on provided `deployment.example.json`.
-```python
-# create deployment.py and following lines
-from deployment.main import deploy
-deploy('/path/to/deployment.json')
+### Configs
+
+```json
+{
+  "keys": {
+    "remote": "origin",
+    "repository_root": "/var/www/awesome-project",
+    "ssh_key": "/opt/deployment/id_rsa",
+    "working_branch": "master"
+  },
+  "actions": [
+    {
+      "description": "Install new dependencies",
+      "exe": "composer install --ignore-platform-reqs --no-interaction"
+    }
+    ...
+  ]
+}
 ```
 
-#### Run
-```shell script
-# python deployment.py
-```
-
-### deployment.json `config` block explained
-  - `working_branch` - *Which branch you want to pull from*
-  - `access_token` - *Your access token if repository is private (if repo is not private just leave it blank )* [github access tokens](https://developer.github.com/v3/auth/)
-  - `path_to_ssh_key` - *Where your deployment key is placed*, [github deployment keys](https://developer.github.com/v3/guides/managing-deploy-keys/#deploy-keys) 
-  - `repository_path` - *Path to root folder of your project*
-  - `github_url` - *Github api which will be queried when main.py is activated* [github api](https://developer.github.com/v3/git/commits/)
-
-All config keys are mandatory, make sure all permissions are set for files and directories.
+- `keys` are mandatory, make sure all permissions are set for files and directories.
+- `actions` contain a list of action, where `description` is plain message for logging and `exe` is command that run
+  right after `git pull ${remote} ${working_branch}`. All actions run as one `pipe`.

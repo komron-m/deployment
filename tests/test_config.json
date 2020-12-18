@@ -1,0 +1,22 @@
+{
+  "keys": {
+    "remote": "origin",
+    "repository_root": "/var/www/awesome-project",
+    "ssh_key": "/opt/deployment/id_rsa",
+    "working_branch": "master"
+  },
+  "actions": [
+    {
+      "description": "Install new dependencies",
+      "exe": "composer install --ignore-platform-reqs --no-interaction"
+    },
+    {
+      "description": "Clean cache values",
+      "exe": "php ${repository_root}/artisan cache:clear"
+    },
+    {
+      "description": "Run migrations for ${working_branch}",
+      "exe": "php ${repository_root}/artisan migrate"
+    }
+  ]
+}
