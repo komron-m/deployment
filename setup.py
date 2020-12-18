@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="deployment",
-    version="1.0.4",
+    version="2.0.0",
     author="Komron Miralizoda",
     author_email="miralizoda.komron@gmail.com",
     description="Simple tool for auto-deployment",
