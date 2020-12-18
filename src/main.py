@@ -83,15 +83,14 @@ def run_actions(file_path: str):
     add_ssh_cmd = replace_placeholder_in_string(add_ssh_cmd, keys)
     add_ssh_cmd = subprocess.run(args=add_ssh_cmd, shell=True)
     if add_ssh_cmd.returncode != 0:
-        print("")
-        # return
+        return
 
     # get last head hash
     head_after_pull = subprocess.run(args="git rev-parse HEAD", shell=True, capture_output=True)
     head_after_pull = head_after_pull.stdout.decode("UTF-8")
     if head_after_pull == last_head:
         logging.warning("no updates were loaded from origin, exiting")
-        # return
+        return
 
     # handle user actions
     info_template = "*\t{} ===> `{}`\n"
