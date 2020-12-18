@@ -1,5 +1,5 @@
 Automate adding `manually ssh-key, cleaning directory from untracked files, pulling from remote` etc... After pulling
-easily configure `post steps`. This can be piped into your CI/CD pipeline. Tested on python 3.x
+easily configure `post steps`. This package can be added into your CI/CD pipeline. Tested on python 3.x
 
 ### Getting started
 
@@ -10,6 +10,9 @@ git clone git@github.com:komron-m/deployment.git && cd deployment
 cp tests/test_config.json /path/to/project_conf.json
 # run script with one argument
 python src/main.py /path/to/project_conf.json
+
+# or use it as package after installing 
+pip install githubdeployment
 ```
 
 ### Configs
