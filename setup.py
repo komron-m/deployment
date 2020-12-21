@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="githubdeployment",
-    version="2.0.1",
+    version="2.0.2",
     author="Komron Miralizoda",
     author_email="miralizoda.komron@gmail.com",
     description="Simple tool for auto-deployment",
@@ -19,5 +19,5 @@ setuptools.setup(
         "License :: OSI Approved :: MIT License",
         "Operating System :: OS Independent",
     ],
-    python_requires='>=3.6',
+    python_requires='>=3.7',
 )

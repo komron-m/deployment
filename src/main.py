@@ -79,7 +79,7 @@ def run_actions(file_path: str):
 
     # add ssh-key to session
     logging.warning("add ssh-key to session and pull from origin")
-    add_ssh_cmd = "ssh-add ${ssh_key} && git pull ${remote} ${working_branch}"
+    add_ssh_cmd = "eval $(ssh-agent) && ssh-add ${ssh_key} && git pull ${remote} ${working_branch}"
     add_ssh_cmd = replace_placeholder_in_string(add_ssh_cmd, keys)
     add_ssh_cmd = subprocess.run(args=add_ssh_cmd, shell=True)
     if add_ssh_cmd.returncode != 0:
