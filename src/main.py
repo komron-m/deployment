@@ -106,6 +106,10 @@ def run_actions(file_path: str):
     logging.warning(info)
     subprocess.run(args=commands, shell=True)
 
+    # kill all active and alive ssh-agents
+    # https://stackoverflow.com/questions/44909625/kill-children-of-python-subprocess-after-subprocess-timeoutexpired-is-thrown
+    subprocess.run("pkill -f ssh-agent")
+
 
 if __name__ == '__main__':
     args = sys.argv
