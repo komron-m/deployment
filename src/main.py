@@ -93,12 +93,12 @@ def run_actions(file_path: str):
         return
 
     # handle user actions
-    info_template = "*\t{} ===> `{}`\n"
+    info_template = " * \t{}\n"
     info = "following commands were parsed and will run in one row:\n"
     command_template = "%s"
     commands = ""
     for action in actions:
-        info += info_template.format(action["description"], action["exe"])
+        info += info_template.format(action["description"])
         commands += command_template % action["exe"]
         commands += " && "
     commands = commands[:-4]
