@@ -56,7 +56,7 @@ def run_actions(file_path: str):
     logging.basicConfig(format='%(asctime)s %(message)s', datefmt='%m/%d/%Y %I:%M:%S%p :::')
 
     # display information about provided config-file.json
-    logging.warning("loading configurations file from `test_conf.json`")
+    logging.warning("loading configurations file from {}".format(file_path))
     keys, actions = parse_config_file(file_path)
 
     # cd into git repo
@@ -90,7 +90,6 @@ def run_actions(file_path: str):
     head_after_pull = head_after_pull.stdout.decode("UTF-8")
     if head_after_pull == last_head:
         logging.warning("no updates were loaded from origin, exiting")
-        return
 
     # handle user actions
     info_template = " * \t{}\n"
